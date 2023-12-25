@@ -37,6 +37,11 @@ def get_summary(df: pd.DataFrame) -> pd.DataFrame:
     return df.describe()
 
 
+def show_univariate_analysis(df: pd.DataFrame):
+    """Function to show the analysis of individual variables."""
+    pass
+
+
 def main():
     # Reading the dataset into a dataframe
     amazon_df = create_dataframe(r'.\amazon.csv')
@@ -44,12 +49,7 @@ def main():
     # cleaning the dataset
     clean_dataset(amazon_df)
 
-    print(amazon_df.info())
-
-    # actual_price = amazon_df.actual_price
-    # print(discounted_price.head())
-    # print()
-    # print(actual_price.head())
+    # print(amazon_df.info())
 
 
 if __name__ == '__main__':
