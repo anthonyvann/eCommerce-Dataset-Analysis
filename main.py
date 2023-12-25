@@ -24,6 +24,7 @@ def clean_dataset(df: pd.DataFrame) -> pd.DataFrame:
     # removing the trailing '%' and converting the value to float dtype
     df.discount_percentage = df.discount_percentage.str.rstrip("%").astype("float") / 100
 
+    df.loc[df.rating == '|', "rating"] = '0'
     # df = df.astype({
     #     'rating': float,
     #     'rating_count': int
@@ -43,6 +44,8 @@ def main():
 
     # cleaning the dataset
     clean_dataset(amazon_df)
+
+    print(amazon_df.rating)
 
     # actual_price = amazon_df.actual_price
     # print(discounted_price.head())
