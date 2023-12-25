@@ -27,7 +27,7 @@ def clean_dataset(df: pd.DataFrame) -> pd.DataFrame:
     # replacing all '|' inputs with 0 and modify the dtype of rating as type float
     df.rating = df.rating.replace('[|]', '0', regex=True).astype(float)
     # removing all commas and modify the dtype of rating_count as type int
-    df.rating_count = df.rating_count.replace('[,]', '', regex=True).astype(int)
+    df.rating_count = df.rating_count.replace('[,]', '', regex=True).astype(float)
 
     return df
 
@@ -38,7 +38,7 @@ def get_summary(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def show_univariate_analysis(df: pd.DataFrame):
-    """Function to show the analysis of individual variables."""
+    """Function to show the analysis of individual variables using the seaborn library."""
     pass
 
 
