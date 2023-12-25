@@ -24,11 +24,10 @@ def clean_dataset(df: pd.DataFrame) -> pd.DataFrame:
     # removing the trailing '%' and converting the value to float dtype
     df.discount_percentage = df.discount_percentage.str.rstrip("%").astype("float") / 100
 
-    df.loc[df.rating == '|', "rating"] = '0'
-    # df = df.astype({
-    #     'rating': float,
-    #     'rating_count': int
-    # })
+    # replacing all '|' inputs with 0 and modify the dtype of rating as type float
+    df.rating = df.rating.replace('[|]', '0', regex=True).astype(float)
+    # removing all commas and modify the dtype of rating_count as type int
+    df.rating_count = df.rating_count.replace('[,]', '', regex=True).astype(int)
 
     return df
 
@@ -45,7 +44,7 @@ def main():
     # cleaning the dataset
     clean_dataset(amazon_df)
 
-    print(amazon_df.rating)
+    print(amazon_df.info())
 
     # actual_price = amazon_df.actual_price
     # print(discounted_price.head())
